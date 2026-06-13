@@ -47,7 +47,7 @@ pub fn cli_process(task_service: TaskService) {
                         .help("task description"),
                 ),
         )
-        .subcommand(Command::new("all"))
+        .subcommand(Command::new("list"))
         .get_matches();
 
     if let Some(add_matches) = matches.subcommand_matches("add") {
@@ -66,7 +66,7 @@ pub fn cli_process(task_service: TaskService) {
         update_desc(upd_matches, &task_service);
     }
 
-    if let Some(_all_matches) = matches.subcommand_matches("all") {
+    if let Some(_all_matches) = matches.subcommand_matches("list") {
         get_all_task(&task_service);
     }
 }
