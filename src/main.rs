@@ -8,7 +8,7 @@ fn main() {
 
 fn clap_subcommand() {
     //cargo run -- add -n alice -a 22
-    // after compilation what would be the command for "cargo run -- add -n alice -a 22"
+    // myapp add -n alice -a 22
 
     let matches = Command::new("myapp")
         .subcommand(
