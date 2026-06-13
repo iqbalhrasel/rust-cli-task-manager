@@ -20,7 +20,7 @@ A CLI based daily task manager
   ```
 - Get all tasks
   ```sh
-  all
+  list
   ```
 
 ## Tech stack
