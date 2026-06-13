@@ -1,9 +1,22 @@
 use clap::{Arg, Command};
 
+use crate::task_service::TaskService;
+
 mod clap_builder;
+mod db;
+mod model;
+mod task_service;
 
 fn main() {
-    clap_builder::cli_process();
+    let _conn = match db::init() {
+        Ok(conn) => {
+            let task_service = TaskService::new(conn);
+            clap_builder::cli_process(task_service);
+        }
+        Err(e) => {
+            println!("error: {:?}", e)
+        }
+    };
 }
 
 fn clap_subcommand() {
