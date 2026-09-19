@@ -3,6 +3,7 @@ use clap::{Arg, Command};
 use crate::task_service::TaskService;
 
 mod clap_builder;
+mod clap_struct;
 mod db;
 mod model;
 mod task_service;
@@ -11,7 +12,7 @@ fn main() {
     let _conn = match db::init() {
         Ok(conn) => {
             let task_service = TaskService::new(conn);
-            clap_builder::cli_process(task_service);
+            clap_struct::cli_process_st(task_service);
         }
         Err(e) => {
             println!("error: {:?}", e)
